@@ -8,12 +8,17 @@
 
 cart1 = Cart.create()
 
-product1 = Product.create(name: "Shirt", price: "24.90")
-product2 = Product.create(name: "Bag", price: "45.00")
-product3 = Product.create(name: "Pant", price: "25.60")
-product4 = Product.create(name: "Hoodie", price: "40.50")
-product5 = Product.create(name: "Hat", price: "20.00")
+product1 = Product.create(name: "Jersey", price: "55.00", image_url: "https://www.customizationdepot.com/new/media/assets/categories/5500/BA5500-ATL598.png")
+product2 = Product.create(name: "Hoodie", price: "40.00", image_url: "http://t0.gstatic.com/images?q=tbn%3AANd9GcS-tOzxkrGb_Xlt4s2RBcd36RvyIpANtcBJ3ucqTLX-NxULEpBrswOl62Y9cyfas5t59m4X68aX&usqp=CAc")
+product3 = Product.create(name: "Long-Sleeve", price: "29.90", image_url: "http://t0.gstatic.com/images?q=tbn%3AANd9GcT7KbTlvll0qGkqJJCZlIdWjiMzkF_u9ZFsM0GO8CF8Mx4gDHOu_Fj662TJJvGqjZ3WY3jKENE&usqp=CAc")
+product4 = Product.create(name: "T-Shirt", price: "24.99", image_url: "https://cache.mrporter.com/variants/images/3633577411310822/in/w2000_q80.jpg")
+product5 = Product.create(name: "Shorts", price: "34.50", image_url: "https://www.dhresource.com/0x0/f2/albu/g10/M00/F3/E8/rBVaWVwLLz2AOiQ-AAFxGXg9FTc977.jpg")
+product6 = Product.create(name: "Hat", price: "25.99", image_url: "https://images-na.ssl-images-amazon.com/images/I/51oSO7gjW7L._AC_UX679_.jpg")
+product7 = Product.create(name: "Beanie", price: "34.50", image_url: "https://cdn.shopify.com/s/files/1/0600/6685/products/blank-beanie-light-grey-merino-wool-2_1024x1024.jpg?v=1548361379")
+product8 = Product.create(name: "Jogger", price: "40.50", image_url: "https://cdn.sorsbt.com/oxxo/ContentImages/Product/19k/19KOX-BOSJOGCEP/orta-bel-jogger-pantolon_grey-melange-gri_5_enbuyuk.JPG?height=758")
 
 cart_item1 = CartItem.create(cart_id: cart1.id, product_id: product1.id)
 cart_item2 = CartItem.create(cart_id: cart1.id, product_id: product4.id)
 cart_item3 = CartItem.create(cart_id: cart1.id, product_id: product5.id)
+cart_item4 = CartItem.create(cart_id: cart1.id, product_id: product7.id)
+cart_item5 = CartItem.create(cart_id: cart1.id, product_id: product8.id)
