@@ -1,18 +1,46 @@
-h1 {
-    color: red;
-}
-
+body {
+    font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica', 'Arial', 'Lucida Grande',
+    sans-serif;
+    font-weight: 300;
+  }
+  
 .content {
-    width: 20%;
-    background-color: white;
+    float: left;
+    width: 25%;
+}
+  
+.container {
+    width: 250px;
+    height: 300px;
+    margin: 10px;
+    background: #ffffff;
+    color: #2d72fc;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
   
 .image {
-    width: 50%
+    width: 100px;
+    height: 100px;
 }
   
-.container {
+.center {
     text-align: center;
-    padding: 10px 20px;
+    padding: 35px;
 }
+
+.shopping-cart {
+    position: absolute;
+    right: 0px;
+    width: 300px;
+    border: 3px solid #73AD21;
+    padding: 10px;
+}
+
+.clothes-box {
+    width: 75%;
+}
+  
+.cart-box {
+    width: 25%;
+}
+  

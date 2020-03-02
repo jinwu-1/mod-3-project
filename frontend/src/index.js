@@ -1,16 +1,18 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    const findDiv = document.querySelector("#products")
+    const findDiv = document.querySelector("#container")
 
     function renderOneProduct(product){
         const newElement = document.createElement("div")
         newElement.className = "content"
         newElement.innerHTML = `
             <div class="container"> 
-                <img src="${product.image_url}" class="image">
-                <h2>${product.name}</h2>
-                <p>Price: $${product.price}</p>
-                <button>Add to Cart</button>
+                <div class="center">
+                    <img src="${product.image_url}" class="image">
+                    <h2>${product.name}</h2>
+                    <p>Price: $${product.price}</p>
+                    <button>Add to Cart</button>
+                <div>
             </div>
         `
         findDiv.append(newElement)
