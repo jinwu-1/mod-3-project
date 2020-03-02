@@ -5,4 +5,9 @@ class CartItemsController < ApplicationController
         render json: @cart_items
     end
 
+    def show
+        @cart_item = CartItem.find(params[:id])
+        render json: @cart_item
+    end
+
 end
