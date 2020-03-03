@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-    let cartArray;
+
+    let cartArray = [];
     const findDiv = document.querySelector("#clothes-box")
     const findListOfItems = document.querySelector(".list-of-items")
 
@@ -21,6 +22,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const addButton = newElement.querySelector(".add-item")
         addButton.addEventListener("click", event => {
             findListOfItems.innerText = ""
+             
+
             fetch("http://localhost:3000/cart_items", {
                 method: "POST",
                 headers: {
@@ -78,6 +81,10 @@ document.addEventListener("DOMContentLoaded", () => {
             newLi.remove()
             fetch(`http://localhost:3000/cart_items/${cartItem.id}`, {
                 method: "DELETE"
+            })
+            .then(response => response.json())
+            .then(results => {
+                cartArray = results;
             })
         })
     }
