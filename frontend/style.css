@@ -8,7 +8,7 @@ body {
     float: left;
 }
   
-.container {
+.item-card {
     width: 250px;
     height: 300px;
     margin: 10px;
