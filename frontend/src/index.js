@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-
+    let cartArray;
     const findDiv = document.querySelector("#clothes-box")
     const findListOfItems = document.querySelector(".list-of-items")
 
@@ -18,25 +18,48 @@ document.addEventListener("DOMContentLoaded", () => {
         `
         findDiv.append(newElement)
 
-        const newButton = newElement.querySelector(".add-item")
-        newButton.addEventListener("click", event => {
-            const newLi = document.createElement("li")
-            newLi.innerHTML = `
-                <p> ${product.name}: $${product.price}
-                <button class="delete">Remove</button>
-                </p>
-            `
-            findListOfItems.append(newLi)
-
-            const removeButton = newLi.querySelector(".delete")
-            removeButton.addEventListener("click", event => {
-                newLi.remove()
-                fetch(`http://localhost:3000/cart_items/${product.id}`, {
-                    method: "DELETE"
+        const addButton = newElement.querySelector(".add-item")
+        addButton.addEventListener("click", event => {
+            findListOfItems.innerText = ""
+            fetch("http://localhost:3000/cart_items", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify({
+                    cart_id: 1,
+                    product_id: product.id
                 })
             })
+            .then(response => response.json())
+            .then(newCartItem => {
+                cartArray.push(newCartItem);
+                renderAllCartItems(cartArray)
+            })
         })
+    }
 
+    function renderCartItem(cartItem){
+        const newLi = document.createElement("li")
+        newLi.innerHTML = `
+            <p> ${cartItem.product.name}: $${cartItem.product.price}
+            <button class="delete">Remove</button>
+            </p>
+        `
+        findListOfItems.append(newLi)
+
+        const removeButton = newLi.querySelector(".delete")
+        removeButton.addEventListener("click", event => {
+            newLi.remove()
+            fetch(`http://localhost:3000/cart_items/${cartItem.id}`, {
+                method: "DELETE"
+            })
+        })
+    }
+
+    function renderAllCartItems(cartItemsArray){
+        cartItemsArray.forEach(cartItem => renderCartItem(cartItem))
     }
 
     function renderAllProducts(productsArray){
@@ -45,36 +68,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     fetch("http://localhost:3000/products")
     .then(response => response.json())
-    .then(productsArray => renderAllProducts(productsArray))  
-// ---------------------------------------------------------------------
-    const shoppingCart = document.querySelector(".sidenav")
-    function renderOneCartItem(item) {
-        const newOrderDiv = document.createElement("div")
-        newOrderDiv.innerHTML = `
-            <div class="order">
-                <p> ${item.product.name} ${item.product.price} <button class="remove-btn"> remove </button> <p>
-        `
-        shoppingCart.append(newOrderDiv)
-
-        const removeBtn = newOrderDiv.querySelector(".remove-btn")
-
-        removeBtn.addEventListener("click", event => {
-            console.log("stop")
-
-            newOrderDiv.remove()
-            fetch(`http://localhost:3000/cart_items/${item.id}`, {
-                method: "DELETE"
-            })
-                
-        })
-
-    }
-
-    function renderAllCartItems(ordersArray){
-        ordersArray.forEach(orders => renderOneCartItem(orders))
-    }
+    .then(productsArray => renderAllProducts(productsArray))
 
     fetch("http://localhost:3000/cart_items")
     .then(response => response.json())
-    .then(ordersArray => renderAllCartItems(ordersArray))
+    .then(cartItemsArray => {
+        cartArray = cartItemsArray;
+        renderAllCartItems(cartItemsArray)
+    })
+
 })
