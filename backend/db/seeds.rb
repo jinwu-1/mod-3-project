@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
+CartItem.destroy_all
 cart1 = Cart.create()
 
 product1 = Product.create(name: "Jersey", price: "55.00", image_url: "https://www.customizationdepot.com/new/media/assets/categories/5500/BA5500-ATL598.png")
@@ -16,9 +16,3 @@ product5 = Product.create(name: "Shorts", price: "34.50", image_url: "https://ww
 product6 = Product.create(name: "Hat", price: "25.99", image_url: "https://images-na.ssl-images-amazon.com/images/I/51oSO7gjW7L._AC_UX679_.jpg")
 product7 = Product.create(name: "Beanie", price: "34.50", image_url: "https://cdn.shopify.com/s/files/1/0600/6685/products/blank-beanie-light-grey-merino-wool-2_1024x1024.jpg?v=1548361379")
 product8 = Product.create(name: "Jogger", price: "40.50", image_url: "https://cdn.sorsbt.com/oxxo/ContentImages/Product/19k/19KOX-BOSJOGCEP/orta-bel-jogger-pantolon_grey-melange-gri_5_enbuyuk.JPG?height=758")
-
-cart_item1 = CartItem.create(cart_id: cart1.id, product_id: product1.id)
-cart_item2 = CartItem.create(cart_id: cart1.id, product_id: product4.id)
-cart_item3 = CartItem.create(cart_id: cart1.id, product_id: product5.id)
-cart_item4 = CartItem.create(cart_id: cart1.id, product_id: product7.id)
-cart_item5 = CartItem.create(cart_id: cart1.id, product_id: product8.id)
