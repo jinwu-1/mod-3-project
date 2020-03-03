@@ -42,11 +42,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function renderCartItem(cartItem){
         const newLi = document.createElement("li")
+        let quantity = 1
+        let var1 = cartItem.product.price * quantity
         newLi.innerHTML = `
-            <p> ${cartItem.product.name}: $${cartItem.product.price}
+            <p id="pTag"> ${cartItem.product.name}: $${var1.toFixed(2)} </p>
+            <select id="quantity">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+            <button class="update">Update</button>
             <button class="delete">Remove</button>
-            </p>
         `
+        findListOfItems.append(newLi)
+        const updateButton = newLi.querySelector(".update")
+        updateButton.addEventListener("click", event => {
+            const selectElement = newLi.querySelector("#quantity")
+            const pTag = newLi.querySelector("#pTag")
+            let var2 = cartItem.product.price * selectElement.value
+            let var3 = var2.toFixed(2)
+            pTag.innerText = `${cartItem.product.name}: $${var3}`
+        })
+
         findListOfItems.append(newLi)
 
         const removeButton = newLi.querySelector(".delete")

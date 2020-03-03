@@ -11371,3 +11371,1191 @@ Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.5ms | Allocations: 2189)
 Completed 200 OK in 7ms (Views: 4.1ms | ActiveRecord: 2.6ms | Allocations: 3069)
 
 
+Started GET "/products" for ::1 at 2020-03-03 11:01:48 -0500
+Started GET "/cart_items" for ::1 at 2020-03-03 11:01:48 -0500
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProductsController#index as */*
+  [1m[35m (6.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CartItemsController#index as */*
+  [1m[36mProduct Load (5.0ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5:in `index'
+  [1m[36mCartItem Load (1.1ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items"[0m
+  ↳ app/controllers/cart_items_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.13ms)
+Completed 200 OK in 11ms (Views: 4.8ms | ActiveRecord: 3.0ms | Allocations: 4003)
+
+
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.99ms)
+Completed 200 OK in 30ms (Views: 10.7ms | ActiveRecord: 14.7ms | Allocations: 12851)
+
+
+Started POST "/cart_items" for ::1 at 2020-03-03 11:01:49 -0500
+Processing by CartItemsController#create as JSON
+  Parameters: {"cart_id"=>1, "product_id"=>3, "cart_item"=>{"cart_id"=>1, "product_id"=>3}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCart Load (1.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCartItem Create (1.5ms)[0m  [1m[32mINSERT INTO "cart_items" ("cart_id", "product_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["cart_id", 1], ["product_id", 3], ["created_at", "2020-03-03 16:01:49.941912"], ["updated_at", "2020-03-03 16:01:49.941912"]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+[active_model_serializers] Rendered CartItemSerializer with ActiveModelSerializers::Adapter::Attributes (3.86ms)
+Completed 200 OK in 51ms (Views: 10.1ms | ActiveRecord: 11.6ms | Allocations: 14150)
+
+
+Started POST "/cart_items" for ::1 at 2020-03-03 11:01:50 -0500
+Processing by CartItemsController#create as JSON
+  Parameters: {"cart_id"=>1, "product_id"=>4, "cart_item"=>{"cart_id"=>1, "product_id"=>4}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCart Load (0.4ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCartItem Create (1.7ms)[0m  [1m[32mINSERT INTO "cart_items" ("cart_id", "product_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["cart_id", 1], ["product_id", 4], ["created_at", "2020-03-03 16:01:50.688639"], ["updated_at", "2020-03-03 16:01:50.688639"]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+[active_model_serializers] Rendered CartItemSerializer with ActiveModelSerializers::Adapter::Attributes (1.06ms)
+Completed 200 OK in 14ms (Views: 1.9ms | ActiveRecord: 3.4ms | Allocations: 4691)
+
+
+Started GET "/cart_items" for ::1 at 2020-03-03 11:01:51 -0500
+Started GET "/products" for ::1 at 2020-03-03 11:01:51 -0500
+Processing by CartItemsController#index as */*
+Processing by ProductsController#index as */*
+  [1m[36mCartItem Load (0.6ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items"[0m
+  ↳ app/controllers/cart_items_controller.rb:5:in `index'
+  [1m[36mProduct Load (1.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (24.68ms)
+Completed 200 OK in 28ms (Views: 26.4ms | ActiveRecord: 1.6ms | Allocations: 3067)
+
+
+[active_model_serializers]   [1m[36mCart Load (26.0ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/cart_items_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/cart_items_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Cart Load (0.0ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/cart_items_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mProduct Load (1.6ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/cart_items_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (42.6ms)
+Completed 200 OK in 45ms (Views: 15.8ms | ActiveRecord: 29.0ms | Allocations: 8687)
+
+
+Started GET "/products" for ::1 at 2020-03-03 11:12:38 -0500
+Started GET "/cart_items" for ::1 at 2020-03-03 11:12:38 -0500
+Processing by CartItemsController#index as */*
+Processing by ProductsController#index as */*
+  [1m[36mCartItem Load (1.3ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items"[0m
+  ↳ app/controllers/cart_items_controller.rb:5:in `index'
+  [1m[36mProduct Load (2.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.91ms)
+Completed 200 OK in 6ms (Views: 3.1ms | ActiveRecord: 2.1ms | Allocations: 3135)
+
+
+[active_model_serializers]   [1m[36mCart Load (1.7ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/cart_items_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/cart_items_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Cart Load (0.0ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/cart_items_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mProduct Load (1.5ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/cart_items_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (20.88ms)
+Completed 200 OK in 24ms (Views: 18.7ms | ActiveRecord: 5.5ms | Allocations: 8799)
+
+
+Started POST "/cart_items" for ::1 at 2020-03-03 11:12:39 -0500
+Processing by CartItemsController#create as JSON
+  Parameters: {"cart_id"=>1, "product_id"=>3, "cart_item"=>{"cart_id"=>1, "product_id"=>3}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCart Load (0.4ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCartItem Create (2.6ms)[0m  [1m[32mINSERT INTO "cart_items" ("cart_id", "product_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["cart_id", 1], ["product_id", 3], ["created_at", "2020-03-03 16:12:39.481687"], ["updated_at", "2020-03-03 16:12:39.481687"]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+[active_model_serializers] Rendered CartItemSerializer with ActiveModelSerializers::Adapter::Attributes (0.57ms)
+Completed 200 OK in 16ms (Views: 1.0ms | ActiveRecord: 5.3ms | Allocations: 4678)
+
+
+Started POST "/cart_items" for ::1 at 2020-03-03 11:12:40 -0500
+Processing by CartItemsController#create as JSON
+  Parameters: {"cart_id"=>1, "product_id"=>3, "cart_item"=>{"cart_id"=>1, "product_id"=>3}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCart Load (0.4ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCartItem Create (1.4ms)[0m  [1m[32mINSERT INTO "cart_items" ("cart_id", "product_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["cart_id", 1], ["product_id", 3], ["created_at", "2020-03-03 16:12:40.282769"], ["updated_at", "2020-03-03 16:12:40.282769"]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+[active_model_serializers] Rendered CartItemSerializer with ActiveModelSerializers::Adapter::Attributes (0.6ms)
+Completed 200 OK in 12ms (Views: 1.0ms | ActiveRecord: 3.9ms | Allocations: 4676)
+
+
+Started POST "/cart_items" for ::1 at 2020-03-03 11:12:43 -0500
+Processing by CartItemsController#create as JSON
+  Parameters: {"cart_id"=>1, "product_id"=>2, "cart_item"=>{"cart_id"=>1, "product_id"=>2}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCart Load (0.4ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCartItem Create (2.1ms)[0m  [1m[32mINSERT INTO "cart_items" ("cart_id", "product_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["cart_id", 1], ["product_id", 2], ["created_at", "2020-03-03 16:12:43.224650"], ["updated_at", "2020-03-03 16:12:43.224650"]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+[active_model_serializers] Rendered CartItemSerializer with ActiveModelSerializers::Adapter::Attributes (0.55ms)
+Completed 200 OK in 13ms (Views: 0.9ms | ActiveRecord: 3.6ms | Allocations: 4674)
+
+
+Started POST "/cart_items" for ::1 at 2020-03-03 11:12:43 -0500
+Processing by CartItemsController#create as JSON
+  Parameters: {"cart_id"=>1, "product_id"=>2, "cart_item"=>{"cart_id"=>1, "product_id"=>2}}
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCart Load (0.5ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCartItem Create (0.8ms)[0m  [1m[32mINSERT INTO "cart_items" ("cart_id", "product_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["cart_id", 1], ["product_id", 2], ["created_at", "2020-03-03 16:12:43.586955"], ["updated_at", "2020-03-03 16:12:43.586955"]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+[active_model_serializers] Rendered CartItemSerializer with ActiveModelSerializers::Adapter::Attributes (0.67ms)
+Completed 200 OK in 13ms (Views: 1.1ms | ActiveRecord: 3.3ms | Allocations: 4674)
+
+
+Started POST "/cart_items" for ::1 at 2020-03-03 11:12:48 -0500
+Processing by CartItemsController#create as JSON
+  Parameters: {"cart_id"=>1, "product_id"=>1, "cart_item"=>{"cart_id"=>1, "product_id"=>1}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCart Load (0.3ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCartItem Create (0.7ms)[0m  [1m[32mINSERT INTO "cart_items" ("cart_id", "product_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["cart_id", 1], ["product_id", 1], ["created_at", "2020-03-03 16:12:48.024300"], ["updated_at", "2020-03-03 16:12:48.024300"]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+[active_model_serializers] Rendered CartItemSerializer with ActiveModelSerializers::Adapter::Attributes (0.73ms)
+Completed 200 OK in 12ms (Views: 1.4ms | ActiveRecord: 2.6ms | Allocations: 4671)
+
+
+Started POST "/cart_items" for ::1 at 2020-03-03 11:12:49 -0500
+Processing by CartItemsController#create as JSON
+  Parameters: {"cart_id"=>1, "product_id"=>5, "cart_item"=>{"cart_id"=>1, "product_id"=>5}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCart Load (0.3ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCartItem Create (1.0ms)[0m  [1m[32mINSERT INTO "cart_items" ("cart_id", "product_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["cart_id", 1], ["product_id", 5], ["created_at", "2020-03-03 16:12:49.127740"], ["updated_at", "2020-03-03 16:12:49.127740"]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+[active_model_serializers] Rendered CartItemSerializer with ActiveModelSerializers::Adapter::Attributes (0.74ms)
+Completed 200 OK in 14ms (Views: 1.1ms | ActiveRecord: 3.0ms | Allocations: 4669)
+
+
+Started POST "/cart_items" for ::1 at 2020-03-03 11:12:50 -0500
+Processing by CartItemsController#create as JSON
+  Parameters: {"cart_id"=>1, "product_id"=>7, "cart_item"=>{"cart_id"=>1, "product_id"=>7}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCart Load (0.3ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCartItem Create (0.7ms)[0m  [1m[32mINSERT INTO "cart_items" ("cart_id", "product_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["cart_id", 1], ["product_id", 7], ["created_at", "2020-03-03 16:12:50.315970"], ["updated_at", "2020-03-03 16:12:50.315970"]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+[active_model_serializers] Rendered CartItemSerializer with ActiveModelSerializers::Adapter::Attributes (0.75ms)
+Completed 200 OK in 13ms (Views: 1.3ms | ActiveRecord: 2.8ms | Allocations: 4669)
+
+
+Started POST "/cart_items" for ::1 at 2020-03-03 11:12:51 -0500
+Processing by CartItemsController#create as JSON
+  Parameters: {"cart_id"=>1, "product_id"=>8, "cart_item"=>{"cart_id"=>1, "product_id"=>8}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCartItem Create (0.5ms)[0m  [1m[32mINSERT INTO "cart_items" ("cart_id", "product_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["cart_id", 1], ["product_id", 8], ["created_at", "2020-03-03 16:12:51.208810"], ["updated_at", "2020-03-03 16:12:51.208810"]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+[active_model_serializers] Rendered CartItemSerializer with ActiveModelSerializers::Adapter::Attributes (0.62ms)
+Completed 200 OK in 11ms (Views: 1.0ms | ActiveRecord: 2.3ms | Allocations: 4669)
+
+
+Started DELETE "/cart_items/140" for ::1 at 2020-03-03 11:13:24 -0500
+Processing by CartItemsController#destroy as */*
+  Parameters: {"id"=>"140"}
+  [1m[36mCartItem Load (0.5ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."id" = $1 LIMIT $2[0m  [["id", 140], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:24:in `destroy'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+  [1m[36mCartItem Destroy (0.9ms)[0m  [1m[31mDELETE FROM "cart_items" WHERE "cart_items"."id" = $1[0m  [["id", 140]]
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+Completed 204 No Content in 7ms (ActiveRecord: 2.2ms | Allocations: 2313)
+
+
+Started DELETE "/cart_items/141" for ::1 at 2020-03-03 11:13:24 -0500
+Processing by CartItemsController#destroy as */*
+  Parameters: {"id"=>"141"}
+  [1m[36mCartItem Load (0.5ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."id" = $1 LIMIT $2[0m  [["id", 141], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:24:in `destroy'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+  [1m[36mCartItem Destroy (0.6ms)[0m  [1m[31mDELETE FROM "cart_items" WHERE "cart_items"."id" = $1[0m  [["id", 141]]
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+Completed 204 No Content in 6ms (ActiveRecord: 2.0ms | Allocations: 2178)
+
+
+Started DELETE "/cart_items/142" for ::1 at 2020-03-03 11:13:25 -0500
+Processing by CartItemsController#destroy as */*
+  Parameters: {"id"=>"142"}
+  [1m[36mCartItem Load (0.5ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."id" = $1 LIMIT $2[0m  [["id", 142], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:24:in `destroy'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+  [1m[36mCartItem Destroy (0.4ms)[0m  [1m[31mDELETE FROM "cart_items" WHERE "cart_items"."id" = $1[0m  [["id", 142]]
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+Completed 204 No Content in 5ms (ActiveRecord: 1.5ms | Allocations: 2178)
+
+
+Started DELETE "/cart_items/143" for ::1 at 2020-03-03 11:13:25 -0500
+Processing by CartItemsController#destroy as */*
+  Parameters: {"id"=>"143"}
+  [1m[36mCartItem Load (0.4ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."id" = $1 LIMIT $2[0m  [["id", 143], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:24:in `destroy'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+  [1m[36mCartItem Destroy (0.6ms)[0m  [1m[31mDELETE FROM "cart_items" WHERE "cart_items"."id" = $1[0m  [["id", 143]]
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+Completed 204 No Content in 7ms (ActiveRecord: 2.2ms | Allocations: 2178)
+
+
+Started DELETE "/cart_items/144" for ::1 at 2020-03-03 11:13:26 -0500
+Processing by CartItemsController#destroy as */*
+  Parameters: {"id"=>"144"}
+  [1m[36mCartItem Load (0.6ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."id" = $1 LIMIT $2[0m  [["id", 144], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:24:in `destroy'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+  [1m[36mCartItem Destroy (0.5ms)[0m  [1m[31mDELETE FROM "cart_items" WHERE "cart_items"."id" = $1[0m  [["id", 144]]
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+Completed 204 No Content in 5ms (ActiveRecord: 1.9ms | Allocations: 2178)
+
+
+Started DELETE "/cart_items/145" for ::1 at 2020-03-03 11:13:26 -0500
+Processing by CartItemsController#destroy as */*
+  Parameters: {"id"=>"145"}
+  [1m[36mCartItem Load (0.5ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."id" = $1 LIMIT $2[0m  [["id", 145], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:24:in `destroy'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+  [1m[36mCartItem Destroy (0.4ms)[0m  [1m[31mDELETE FROM "cart_items" WHERE "cart_items"."id" = $1[0m  [["id", 145]]
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+Completed 204 No Content in 5ms (ActiveRecord: 1.7ms | Allocations: 2178)
+
+
+Started DELETE "/cart_items/146" for ::1 at 2020-03-03 11:13:26 -0500
+Processing by CartItemsController#destroy as */*
+  Parameters: {"id"=>"146"}
+  [1m[36mCartItem Load (0.3ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."id" = $1 LIMIT $2[0m  [["id", 146], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:24:in `destroy'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+  [1m[36mCartItem Destroy (0.3ms)[0m  [1m[31mDELETE FROM "cart_items" WHERE "cart_items"."id" = $1[0m  [["id", 146]]
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+Completed 204 No Content in 4ms (ActiveRecord: 1.4ms | Allocations: 2178)
+
+
+Started DELETE "/cart_items/147" for ::1 at 2020-03-03 11:13:26 -0500
+Processing by CartItemsController#destroy as */*
+  Parameters: {"id"=>"147"}
+  [1m[36mCartItem Load (0.4ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."id" = $1 LIMIT $2[0m  [["id", 147], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:24:in `destroy'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+  [1m[36mCartItem Destroy (0.4ms)[0m  [1m[31mDELETE FROM "cart_items" WHERE "cart_items"."id" = $1[0m  [["id", 147]]
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+Completed 204 No Content in 5ms (ActiveRecord: 1.5ms | Allocations: 2178)
+
+
+Started DELETE "/cart_items/148" for ::1 at 2020-03-03 11:13:27 -0500
+Processing by CartItemsController#destroy as */*
+  Parameters: {"id"=>"148"}
+  [1m[36mCartItem Load (0.3ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."id" = $1 LIMIT $2[0m  [["id", 148], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:24:in `destroy'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+  [1m[36mCartItem Destroy (0.4ms)[0m  [1m[31mDELETE FROM "cart_items" WHERE "cart_items"."id" = $1[0m  [["id", 148]]
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+Completed 204 No Content in 5ms (ActiveRecord: 1.5ms | Allocations: 2178)
+
+
+Started DELETE "/cart_items/149" for ::1 at 2020-03-03 11:13:27 -0500
+Processing by CartItemsController#destroy as */*
+  Parameters: {"id"=>"149"}
+  [1m[36mCartItem Load (0.3ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."id" = $1 LIMIT $2[0m  [["id", 149], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:24:in `destroy'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+  [1m[36mCartItem Destroy (0.3ms)[0m  [1m[31mDELETE FROM "cart_items" WHERE "cart_items"."id" = $1[0m  [["id", 149]]
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+Completed 204 No Content in 5ms (ActiveRecord: 1.4ms | Allocations: 2178)
+
+
+Started GET "/cart_items" for ::1 at 2020-03-03 11:13:28 -0500
+Started GET "/products" for ::1 at 2020-03-03 11:13:28 -0500
+Processing by CartItemsController#index as */*
+Processing by ProductsController#index as */*
+  [1m[36mCartItem Load (1.1ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items"[0m
+  ↳ app/controllers/cart_items_controller.rb:5:in `index'
+  [1m[36mProduct Load (1.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.06ms)
+  ↳ app/controllers/products_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.64ms)
+Completed 200 OK in 5ms (Views: 3.3ms | ActiveRecord: 1.1ms | Allocations: 1735)
+
+
+Completed 200 OK in 8ms (Views: 6.5ms | ActiveRecord: 1.5ms | Allocations: 2894)
+
+
+Started POST "/cart_items" for ::1 at 2020-03-03 11:15:51 -0500
+Processing by CartItemsController#create as JSON
+  Parameters: {"cart_id"=>1, "product_id"=>2, "cart_item"=>{"cart_id"=>1, "product_id"=>2}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCart Load (0.3ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCartItem Create (1.1ms)[0m  [1m[32mINSERT INTO "cart_items" ("cart_id", "product_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["cart_id", 1], ["product_id", 2], ["created_at", "2020-03-03 16:15:51.726441"], ["updated_at", "2020-03-03 16:15:51.726441"]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+[active_model_serializers] Rendered CartItemSerializer with ActiveModelSerializers::Adapter::Attributes (0.75ms)
+Completed 200 OK in 14ms (Views: 1.3ms | ActiveRecord: 2.9ms | Allocations: 4674)
+
+
+Started POST "/cart_items" for ::1 at 2020-03-03 11:17:38 -0500
+Processing by CartItemsController#create as JSON
+  Parameters: {"cart_id"=>1, "product_id"=>4, "cart_item"=>{"cart_id"=>1, "product_id"=>4}}
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCart Load (0.3ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCartItem Create (0.8ms)[0m  [1m[32mINSERT INTO "cart_items" ("cart_id", "product_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["cart_id", 1], ["product_id", 4], ["created_at", "2020-03-03 16:17:38.098525"], ["updated_at", "2020-03-03 16:17:38.098525"]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+[active_model_serializers] Rendered CartItemSerializer with ActiveModelSerializers::Adapter::Attributes (0.93ms)
+Completed 200 OK in 12ms (Views: 1.4ms | ActiveRecord: 2.7ms | Allocations: 4669)
+
+
+Started POST "/cart_items" for ::1 at 2020-03-03 11:17:38 -0500
+Processing by CartItemsController#create as JSON
+  Parameters: {"cart_id"=>1, "product_id"=>4, "cart_item"=>{"cart_id"=>1, "product_id"=>4}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCartItem Create (0.9ms)[0m  [1m[32mINSERT INTO "cart_items" ("cart_id", "product_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["cart_id", 1], ["product_id", 4], ["created_at", "2020-03-03 16:17:38.253608"], ["updated_at", "2020-03-03 16:17:38.253608"]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+[active_model_serializers] Rendered CartItemSerializer with ActiveModelSerializers::Adapter::Attributes (1.18ms)
+Completed 200 OK in 13ms (Views: 1.9ms | ActiveRecord: 2.7ms | Allocations: 4669)
+
+
+Started GET "/cart_items" for ::1 at 2020-03-03 11:17:40 -0500
+Processing by CartItemsController#index as HTML
+  [1m[36mCartItem Load (0.5ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items"[0m
+  ↳ app/controllers/cart_items_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCart Load (0.7ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/cart_items_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/cart_items_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Cart Load (0.0ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/cart_items_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/cart_items_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Cart Load (0.0ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/cart_items_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/cart_items_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (13.3ms)
+Completed 200 OK in 16ms (Views: 14.3ms | ActiveRecord: 1.7ms | Allocations: 8986)
+
+
+Started POST "/cart_items" for ::1 at 2020-03-03 11:17:50 -0500
+Processing by CartItemsController#create as JSON
+  Parameters: {"cart_id"=>1, "product_id"=>4, "cart_item"=>{"cart_id"=>1, "product_id"=>4}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCart Load (0.3ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCartItem Create (0.7ms)[0m  [1m[32mINSERT INTO "cart_items" ("cart_id", "product_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["cart_id", 1], ["product_id", 4], ["created_at", "2020-03-03 16:17:50.497535"], ["updated_at", "2020-03-03 16:17:50.497535"]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+[active_model_serializers] Rendered CartItemSerializer with ActiveModelSerializers::Adapter::Attributes (0.6ms)
+Completed 200 OK in 14ms (Views: 1.1ms | ActiveRecord: 2.5ms | Allocations: 4669)
+
+
+Started POST "/cart_items" for ::1 at 2020-03-03 11:17:50 -0500
+Processing by CartItemsController#create as JSON
+  Parameters: {"cart_id"=>1, "product_id"=>4, "cart_item"=>{"cart_id"=>1, "product_id"=>4}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCartItem Create (0.5ms)[0m  [1m[32mINSERT INTO "cart_items" ("cart_id", "product_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["cart_id", 1], ["product_id", 4], ["created_at", "2020-03-03 16:17:50.890105"], ["updated_at", "2020-03-03 16:17:50.890105"]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+[active_model_serializers] Rendered CartItemSerializer with ActiveModelSerializers::Adapter::Attributes (0.82ms)
+Completed 200 OK in 11ms (Views: 1.9ms | ActiveRecord: 2.0ms | Allocations: 4669)
+
+
+Started POST "/cart_items" for ::1 at 2020-03-03 11:17:51 -0500
+Processing by CartItemsController#create as JSON
+  Parameters: {"cart_id"=>1, "product_id"=>4, "cart_item"=>{"cart_id"=>1, "product_id"=>4}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCartItem Create (0.5ms)[0m  [1m[32mINSERT INTO "cart_items" ("cart_id", "product_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["cart_id", 1], ["product_id", 4], ["created_at", "2020-03-03 16:17:51.040606"], ["updated_at", "2020-03-03 16:17:51.040606"]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+[active_model_serializers] Rendered CartItemSerializer with ActiveModelSerializers::Adapter::Attributes (0.78ms)
+Completed 200 OK in 21ms (Views: 1.3ms | ActiveRecord: 1.8ms | Allocations: 4672)
+
+
+Started POST "/cart_items" for ::1 at 2020-03-03 11:17:51 -0500
+Processing by CartItemsController#create as JSON
+  Parameters: {"cart_id"=>1, "product_id"=>4, "cart_item"=>{"cart_id"=>1, "product_id"=>4}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCartItem Create (0.5ms)[0m  [1m[32mINSERT INTO "cart_items" ("cart_id", "product_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["cart_id", 1], ["product_id", 4], ["created_at", "2020-03-03 16:17:51.150521"], ["updated_at", "2020-03-03 16:17:51.150521"]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+[active_model_serializers] Rendered CartItemSerializer with ActiveModelSerializers::Adapter::Attributes (0.59ms)
+Completed 200 OK in 11ms (Views: 0.9ms | ActiveRecord: 2.0ms | Allocations: 4669)
+
+
+Started POST "/cart_items" for ::1 at 2020-03-03 11:17:51 -0500
+Processing by CartItemsController#create as JSON
+  Parameters: {"cart_id"=>1, "product_id"=>4, "cart_item"=>{"cart_id"=>1, "product_id"=>4}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCartItem Create (0.5ms)[0m  [1m[32mINSERT INTO "cart_items" ("cart_id", "product_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["cart_id", 1], ["product_id", 4], ["created_at", "2020-03-03 16:17:51.274295"], ["updated_at", "2020-03-03 16:17:51.274295"]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+[active_model_serializers] Rendered CartItemSerializer with ActiveModelSerializers::Adapter::Attributes (1.76ms)
+Completed 200 OK in 12ms (Views: 2.4ms | ActiveRecord: 2.1ms | Allocations: 4669)
+
+
+Started POST "/cart_items" for ::1 at 2020-03-03 11:17:51 -0500
+Processing by CartItemsController#create as JSON
+  Parameters: {"cart_id"=>1, "product_id"=>4, "cart_item"=>{"cart_id"=>1, "product_id"=>4}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCart Load (0.3ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCartItem Create (0.5ms)[0m  [1m[32mINSERT INTO "cart_items" ("cart_id", "product_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["cart_id", 1], ["product_id", 4], ["created_at", "2020-03-03 16:17:51.398509"], ["updated_at", "2020-03-03 16:17:51.398509"]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+[active_model_serializers] Rendered CartItemSerializer with ActiveModelSerializers::Adapter::Attributes (0.66ms)
+Completed 200 OK in 12ms (Views: 1.1ms | ActiveRecord: 2.4ms | Allocations: 4669)
+
+
+Started POST "/cart_items" for ::1 at 2020-03-03 11:17:51 -0500
+Processing by CartItemsController#create as JSON
+  Parameters: {"cart_id"=>1, "product_id"=>4, "cart_item"=>{"cart_id"=>1, "product_id"=>4}}
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCartItem Create (0.5ms)[0m  [1m[32mINSERT INTO "cart_items" ("cart_id", "product_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["cart_id", 1], ["product_id", 4], ["created_at", "2020-03-03 16:17:51.511725"], ["updated_at", "2020-03-03 16:17:51.511725"]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+[active_model_serializers] Rendered CartItemSerializer with ActiveModelSerializers::Adapter::Attributes (0.59ms)
+Completed 200 OK in 11ms (Views: 1.1ms | ActiveRecord: 2.1ms | Allocations: 4669)
+
+
+Started POST "/cart_items" for ::1 at 2020-03-03 11:17:51 -0500
+Processing by CartItemsController#create as JSON
+  Parameters: {"cart_id"=>1, "product_id"=>4, "cart_item"=>{"cart_id"=>1, "product_id"=>4}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCart Load (0.3ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCartItem Create (0.6ms)[0m  [1m[32mINSERT INTO "cart_items" ("cart_id", "product_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["cart_id", 1], ["product_id", 4], ["created_at", "2020-03-03 16:17:51.619510"], ["updated_at", "2020-03-03 16:17:51.619510"]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+[active_model_serializers] Rendered CartItemSerializer with ActiveModelSerializers::Adapter::Attributes (0.7ms)
+Completed 200 OK in 12ms (Views: 1.2ms | ActiveRecord: 3.1ms | Allocations: 4669)
+
+
+Started POST "/cart_items" for ::1 at 2020-03-03 11:17:51 -0500
+Processing by CartItemsController#create as JSON
+  Parameters: {"cart_id"=>1, "product_id"=>4, "cart_item"=>{"cart_id"=>1, "product_id"=>4}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCartItem Create (0.5ms)[0m  [1m[32mINSERT INTO "cart_items" ("cart_id", "product_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["cart_id", 1], ["product_id", 4], ["created_at", "2020-03-03 16:17:51.721527"], ["updated_at", "2020-03-03 16:17:51.721527"]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+[active_model_serializers] Rendered CartItemSerializer with ActiveModelSerializers::Adapter::Attributes (0.61ms)
+Completed 200 OK in 10ms (Views: 1.1ms | ActiveRecord: 2.7ms | Allocations: 4669)
+
+
+Started POST "/cart_items" for ::1 at 2020-03-03 11:17:51 -0500
+Processing by CartItemsController#create as JSON
+  Parameters: {"cart_id"=>1, "product_id"=>4, "cart_item"=>{"cart_id"=>1, "product_id"=>4}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCartItem Create (1.0ms)[0m  [1m[32mINSERT INTO "cart_items" ("cart_id", "product_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["cart_id", 1], ["product_id", 4], ["created_at", "2020-03-03 16:17:51.840111"], ["updated_at", "2020-03-03 16:17:51.840111"]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+[active_model_serializers] Rendered CartItemSerializer with ActiveModelSerializers::Adapter::Attributes (0.89ms)
+Completed 200 OK in 13ms (Views: 1.7ms | ActiveRecord: 3.1ms | Allocations: 4669)
+
+
+Started POST "/cart_items" for ::1 at 2020-03-03 11:17:52 -0500
+Processing by CartItemsController#create as JSON
+  Parameters: {"cart_id"=>1, "product_id"=>4, "cart_item"=>{"cart_id"=>1, "product_id"=>4}}
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCart Load (0.3ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCartItem Create (0.6ms)[0m  [1m[32mINSERT INTO "cart_items" ("cart_id", "product_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["cart_id", 1], ["product_id", 4], ["created_at", "2020-03-03 16:17:52.033758"], ["updated_at", "2020-03-03 16:17:52.033758"]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+[active_model_serializers] Rendered CartItemSerializer with ActiveModelSerializers::Adapter::Attributes (0.52ms)
+Completed 200 OK in 11ms (Views: 0.9ms | ActiveRecord: 2.1ms | Allocations: 4669)
+
+
+Started POST "/cart_items" for ::1 at 2020-03-03 11:17:52 -0500
+Processing by CartItemsController#create as JSON
+  Parameters: {"cart_id"=>1, "product_id"=>4, "cart_item"=>{"cart_id"=>1, "product_id"=>4}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCartItem Create (1.4ms)[0m  [1m[32mINSERT INTO "cart_items" ("cart_id", "product_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["cart_id", 1], ["product_id", 4], ["created_at", "2020-03-03 16:17:52.149034"], ["updated_at", "2020-03-03 16:17:52.149034"]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+[active_model_serializers] Rendered CartItemSerializer with ActiveModelSerializers::Adapter::Attributes (0.56ms)
+Completed 200 OK in 11ms (Views: 0.9ms | ActiveRecord: 2.4ms | Allocations: 4669)
+
+
+Started GET "/cart_items" for ::1 at 2020-03-03 11:17:55 -0500
+Processing by CartItemsController#index as HTML
+  [1m[36mCartItem Load (0.6ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items"[0m
+  ↳ app/controllers/cart_items_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCart Load (0.3ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/cart_items_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/cart_items_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Cart Load (0.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/cart_items_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/cart_items_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Cart Load (0.0ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/cart_items_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/cart_items_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Cart Load (0.0ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/cart_items_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/cart_items_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Cart Load (0.0ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/cart_items_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/cart_items_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Cart Load (0.0ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/cart_items_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/cart_items_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Cart Load (0.0ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/cart_items_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/cart_items_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Cart Load (0.0ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/cart_items_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/cart_items_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Cart Load (0.0ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/cart_items_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/cart_items_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Cart Load (0.0ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/cart_items_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/cart_items_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Cart Load (0.0ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/cart_items_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/cart_items_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Cart Load (0.0ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/cart_items_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/cart_items_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Cart Load (0.0ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/cart_items_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/cart_items_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Cart Load (0.0ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/cart_items_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/cart_items_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Cart Load (0.0ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/cart_items_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/cart_items_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (71.78ms)
+Completed 200 OK in 75ms (Views: 73.0ms | ActiveRecord: 1.8ms | Allocations: 40191)
+
+
+Started DELETE "/cart_items/150" for ::1 at 2020-03-03 11:18:04 -0500
+Processing by CartItemsController#destroy as */*
+  Parameters: {"id"=>"150"}
+  [1m[36mCartItem Load (0.5ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."id" = $1 LIMIT $2[0m  [["id", 150], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:24:in `destroy'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+  [1m[36mCartItem Destroy (0.3ms)[0m  [1m[31mDELETE FROM "cart_items" WHERE "cart_items"."id" = $1[0m  [["id", 150]]
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+Completed 204 No Content in 5ms (ActiveRecord: 1.3ms | Allocations: 2178)
+
+
+Started DELETE "/cart_items/151" for ::1 at 2020-03-03 11:18:04 -0500
+Processing by CartItemsController#destroy as */*
+  Parameters: {"id"=>"151"}
+  [1m[36mCartItem Load (0.3ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."id" = $1 LIMIT $2[0m  [["id", 151], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:24:in `destroy'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+  [1m[36mCartItem Destroy (0.4ms)[0m  [1m[31mDELETE FROM "cart_items" WHERE "cart_items"."id" = $1[0m  [["id", 151]]
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+Completed 204 No Content in 5ms (ActiveRecord: 1.7ms | Allocations: 2178)
+
+
+Started DELETE "/cart_items/152" for ::1 at 2020-03-03 11:18:04 -0500
+Processing by CartItemsController#destroy as */*
+  Parameters: {"id"=>"152"}
+  [1m[36mCartItem Load (0.3ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."id" = $1 LIMIT $2[0m  [["id", 152], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:24:in `destroy'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+  [1m[36mCartItem Destroy (0.4ms)[0m  [1m[31mDELETE FROM "cart_items" WHERE "cart_items"."id" = $1[0m  [["id", 152]]
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+Completed 204 No Content in 5ms (ActiveRecord: 1.6ms | Allocations: 2178)
+
+
+Started DELETE "/cart_items/153" for ::1 at 2020-03-03 11:18:04 -0500
+Processing by CartItemsController#destroy as */*
+  Parameters: {"id"=>"153"}
+  [1m[36mCartItem Load (0.3ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."id" = $1 LIMIT $2[0m  [["id", 153], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:24:in `destroy'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+  [1m[36mCartItem Destroy (0.3ms)[0m  [1m[31mDELETE FROM "cart_items" WHERE "cart_items"."id" = $1[0m  [["id", 153]]
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+Completed 204 No Content in 4ms (ActiveRecord: 1.3ms | Allocations: 2178)
+
+
+Started DELETE "/cart_items/154" for ::1 at 2020-03-03 11:18:04 -0500
+Processing by CartItemsController#destroy as */*
+  Parameters: {"id"=>"154"}
+  [1m[36mCartItem Load (0.3ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."id" = $1 LIMIT $2[0m  [["id", 154], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:24:in `destroy'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+  [1m[36mCartItem Destroy (0.3ms)[0m  [1m[31mDELETE FROM "cart_items" WHERE "cart_items"."id" = $1[0m  [["id", 154]]
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+Completed 204 No Content in 5ms (ActiveRecord: 1.4ms | Allocations: 2178)
+
+
+Started DELETE "/cart_items/155" for ::1 at 2020-03-03 11:18:04 -0500
+Processing by CartItemsController#destroy as */*
+  Parameters: {"id"=>"155"}
+  [1m[36mCartItem Load (0.3ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."id" = $1 LIMIT $2[0m  [["id", 155], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:24:in `destroy'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+  [1m[36mCartItem Destroy (4.8ms)[0m  [1m[31mDELETE FROM "cart_items" WHERE "cart_items"."id" = $1[0m  [["id", 155]]
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+Completed 204 No Content in 13ms (ActiveRecord: 7.2ms | Allocations: 2178)
+
+
+Started DELETE "/cart_items/156" for ::1 at 2020-03-03 11:18:04 -0500
+Processing by CartItemsController#destroy as */*
+  Parameters: {"id"=>"156"}
+  [1m[36mCartItem Load (0.8ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."id" = $1 LIMIT $2[0m  [["id", 156], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:24:in `destroy'
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+  [1m[36mCartItem Destroy (1.0ms)[0m  [1m[31mDELETE FROM "cart_items" WHERE "cart_items"."id" = $1[0m  [["id", 156]]
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+Completed 204 No Content in 8ms (ActiveRecord: 2.8ms | Allocations: 2178)
+
+
+Started DELETE "/cart_items/157" for ::1 at 2020-03-03 11:18:05 -0500
+Processing by CartItemsController#destroy as */*
+  Parameters: {"id"=>"157"}
+  [1m[36mCartItem Load (0.3ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."id" = $1 LIMIT $2[0m  [["id", 157], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:24:in `destroy'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+  [1m[36mCartItem Destroy (0.4ms)[0m  [1m[31mDELETE FROM "cart_items" WHERE "cart_items"."id" = $1[0m  [["id", 157]]
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+Completed 204 No Content in 6ms (ActiveRecord: 1.7ms | Allocations: 2178)
+
+
+Started DELETE "/cart_items/158" for ::1 at 2020-03-03 11:18:05 -0500
+Processing by CartItemsController#destroy as */*
+  Parameters: {"id"=>"158"}
+  [1m[36mCartItem Load (0.3ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."id" = $1 LIMIT $2[0m  [["id", 158], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:24:in `destroy'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+  [1m[36mCartItem Destroy (0.5ms)[0m  [1m[31mDELETE FROM "cart_items" WHERE "cart_items"."id" = $1[0m  [["id", 158]]
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+Completed 204 No Content in 5ms (ActiveRecord: 1.5ms | Allocations: 2178)
+
+
+Started DELETE "/cart_items/159" for ::1 at 2020-03-03 11:18:05 -0500
+Processing by CartItemsController#destroy as */*
+  Parameters: {"id"=>"159"}
+  [1m[36mCartItem Load (0.3ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."id" = $1 LIMIT $2[0m  [["id", 159], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:24:in `destroy'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+  [1m[36mCartItem Destroy (0.4ms)[0m  [1m[31mDELETE FROM "cart_items" WHERE "cart_items"."id" = $1[0m  [["id", 159]]
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+Completed 204 No Content in 6ms (ActiveRecord: 1.6ms | Allocations: 2178)
+
+
+Started DELETE "/cart_items/160" for ::1 at 2020-03-03 11:18:05 -0500
+Processing by CartItemsController#destroy as */*
+  Parameters: {"id"=>"160"}
+  [1m[36mCartItem Load (0.3ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."id" = $1 LIMIT $2[0m  [["id", 160], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:24:in `destroy'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+  [1m[36mCartItem Destroy (0.4ms)[0m  [1m[31mDELETE FROM "cart_items" WHERE "cart_items"."id" = $1[0m  [["id", 160]]
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+Completed 204 No Content in 6ms (ActiveRecord: 1.7ms | Allocations: 2178)
+
+
+Started DELETE "/cart_items/161" for ::1 at 2020-03-03 11:18:05 -0500
+Processing by CartItemsController#destroy as */*
+  Parameters: {"id"=>"161"}
+  [1m[36mCartItem Load (0.4ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."id" = $1 LIMIT $2[0m  [["id", 161], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:24:in `destroy'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+  [1m[36mCartItem Destroy (0.4ms)[0m  [1m[31mDELETE FROM "cart_items" WHERE "cart_items"."id" = $1[0m  [["id", 161]]
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+Completed 204 No Content in 6ms (ActiveRecord: 1.7ms | Allocations: 2178)
+
+
+Started DELETE "/cart_items/162" for ::1 at 2020-03-03 11:18:05 -0500
+Processing by CartItemsController#destroy as */*
+  Parameters: {"id"=>"162"}
+  [1m[36mCartItem Load (0.3ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."id" = $1 LIMIT $2[0m  [["id", 162], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:24:in `destroy'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+  [1m[36mCartItem Destroy (0.7ms)[0m  [1m[31mDELETE FROM "cart_items" WHERE "cart_items"."id" = $1[0m  [["id", 162]]
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+Completed 204 No Content in 5ms (ActiveRecord: 1.6ms | Allocations: 2178)
+
+
+Started DELETE "/cart_items/163" for ::1 at 2020-03-03 11:18:05 -0500
+Processing by CartItemsController#destroy as */*
+  Parameters: {"id"=>"163"}
+  [1m[36mCartItem Load (0.4ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."id" = $1 LIMIT $2[0m  [["id", 163], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:24:in `destroy'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+  [1m[36mCartItem Destroy (0.4ms)[0m  [1m[31mDELETE FROM "cart_items" WHERE "cart_items"."id" = $1[0m  [["id", 163]]
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+Completed 204 No Content in 5ms (ActiveRecord: 1.5ms | Allocations: 2178)
+
+
+Started DELETE "/cart_items/150" for ::1 at 2020-03-03 11:18:05 -0500
+Processing by CartItemsController#destroy as */*
+  Parameters: {"id"=>"150"}
+  [1m[36mCartItem Load (0.3ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."id" = $1 LIMIT $2[0m  [["id", 150], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:24:in `destroy'
+Completed 404 Not Found in 2ms (ActiveRecord: 0.3ms | Allocations: 601)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find CartItem with 'id'=150):
+  
+app/controllers/cart_items_controller.rb:24:in `destroy'
+Started DELETE "/cart_items/151" for ::1 at 2020-03-03 11:18:05 -0500
+Processing by CartItemsController#destroy as */*
+  Parameters: {"id"=>"151"}
+  [1m[36mCartItem Load (0.5ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."id" = $1 LIMIT $2[0m  [["id", 151], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:24:in `destroy'
+Completed 404 Not Found in 2ms (ActiveRecord: 0.5ms | Allocations: 595)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find CartItem with 'id'=151):
+  
+app/controllers/cart_items_controller.rb:24:in `destroy'
+Started DELETE "/cart_items/152" for ::1 at 2020-03-03 11:18:06 -0500
+Processing by CartItemsController#destroy as */*
+  Parameters: {"id"=>"152"}
+  [1m[36mCartItem Load (0.4ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."id" = $1 LIMIT $2[0m  [["id", 152], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:24:in `destroy'
+Completed 404 Not Found in 2ms (ActiveRecord: 0.4ms | Allocations: 595)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find CartItem with 'id'=152):
+  
+app/controllers/cart_items_controller.rb:24:in `destroy'
+Started DELETE "/cart_items/153" for ::1 at 2020-03-03 11:18:06 -0500
+Processing by CartItemsController#destroy as */*
+  Parameters: {"id"=>"153"}
+  [1m[36mCartItem Load (0.4ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."id" = $1 LIMIT $2[0m  [["id", 153], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:24:in `destroy'
+Completed 404 Not Found in 2ms (ActiveRecord: 0.4ms | Allocations: 595)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find CartItem with 'id'=153):
+  
+app/controllers/cart_items_controller.rb:24:in `destroy'
+Started DELETE "/cart_items/154" for ::1 at 2020-03-03 11:18:06 -0500
+Processing by CartItemsController#destroy as */*
+  Parameters: {"id"=>"154"}
+  [1m[36mCartItem Load (0.3ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."id" = $1 LIMIT $2[0m  [["id", 154], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:24:in `destroy'
+Completed 404 Not Found in 2ms (ActiveRecord: 0.3ms | Allocations: 595)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find CartItem with 'id'=154):
+  
+app/controllers/cart_items_controller.rb:24:in `destroy'
+Started DELETE "/cart_items/155" for ::1 at 2020-03-03 11:18:06 -0500
+Processing by CartItemsController#destroy as */*
+  Parameters: {"id"=>"155"}
+  [1m[36mCartItem Load (0.5ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."id" = $1 LIMIT $2[0m  [["id", 155], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:24:in `destroy'
+Completed 404 Not Found in 3ms (ActiveRecord: 0.5ms | Allocations: 595)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find CartItem with 'id'=155):
+  
+app/controllers/cart_items_controller.rb:24:in `destroy'
+Started DELETE "/cart_items/156" for ::1 at 2020-03-03 11:18:06 -0500
+Processing by CartItemsController#destroy as */*
+  Parameters: {"id"=>"156"}
+  [1m[36mCartItem Load (0.5ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."id" = $1 LIMIT $2[0m  [["id", 156], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:24:in `destroy'
+Completed 404 Not Found in 2ms (ActiveRecord: 0.5ms | Allocations: 595)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find CartItem with 'id'=156):
+  
+app/controllers/cart_items_controller.rb:24:in `destroy'
+Started DELETE "/cart_items/157" for ::1 at 2020-03-03 11:18:06 -0500
+Processing by CartItemsController#destroy as */*
+  Parameters: {"id"=>"157"}
+  [1m[36mCartItem Load (0.5ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."id" = $1 LIMIT $2[0m  [["id", 157], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:24:in `destroy'
+Completed 404 Not Found in 2ms (ActiveRecord: 0.5ms | Allocations: 595)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find CartItem with 'id'=157):
+  
+app/controllers/cart_items_controller.rb:24:in `destroy'
+Started DELETE "/cart_items/158" for ::1 at 2020-03-03 11:18:06 -0500
+Processing by CartItemsController#destroy as */*
+  Parameters: {"id"=>"158"}
+  [1m[36mCartItem Load (0.4ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."id" = $1 LIMIT $2[0m  [["id", 158], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:24:in `destroy'
+Completed 404 Not Found in 2ms (ActiveRecord: 0.4ms | Allocations: 595)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find CartItem with 'id'=158):
+  
+app/controllers/cart_items_controller.rb:24:in `destroy'
+Started DELETE "/cart_items/159" for ::1 at 2020-03-03 11:18:07 -0500
+Processing by CartItemsController#destroy as */*
+  Parameters: {"id"=>"159"}
+  [1m[36mCartItem Load (0.4ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."id" = $1 LIMIT $2[0m  [["id", 159], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:24:in `destroy'
+Completed 404 Not Found in 2ms (ActiveRecord: 0.4ms | Allocations: 595)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find CartItem with 'id'=159):
+  
+app/controllers/cart_items_controller.rb:24:in `destroy'
+Started DELETE "/cart_items/160" for ::1 at 2020-03-03 11:18:07 -0500
+Processing by CartItemsController#destroy as */*
+  Parameters: {"id"=>"160"}
+  [1m[36mCartItem Load (0.3ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."id" = $1 LIMIT $2[0m  [["id", 160], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:24:in `destroy'
+Completed 404 Not Found in 2ms (ActiveRecord: 0.3ms | Allocations: 595)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find CartItem with 'id'=160):
+  
+app/controllers/cart_items_controller.rb:24:in `destroy'
+Started DELETE "/cart_items/161" for ::1 at 2020-03-03 11:18:07 -0500
+Processing by CartItemsController#destroy as */*
+  Parameters: {"id"=>"161"}
+  [1m[36mCartItem Load (0.4ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."id" = $1 LIMIT $2[0m  [["id", 161], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:24:in `destroy'
+Completed 404 Not Found in 2ms (ActiveRecord: 0.4ms | Allocations: 595)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find CartItem with 'id'=161):
+  
+app/controllers/cart_items_controller.rb:24:in `destroy'
+Started DELETE "/cart_items/162" for ::1 at 2020-03-03 11:18:07 -0500
+Processing by CartItemsController#destroy as */*
+  Parameters: {"id"=>"162"}
+  [1m[36mCartItem Load (1.5ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."id" = $1 LIMIT $2[0m  [["id", 162], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:24:in `destroy'
+Completed 404 Not Found in 3ms (ActiveRecord: 1.5ms | Allocations: 595)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find CartItem with 'id'=162):
+  
+app/controllers/cart_items_controller.rb:24:in `destroy'
+Started DELETE "/cart_items/163" for ::1 at 2020-03-03 11:18:07 -0500
+Processing by CartItemsController#destroy as */*
+  Parameters: {"id"=>"163"}
+  [1m[36mCartItem Load (0.3ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."id" = $1 LIMIT $2[0m  [["id", 163], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:24:in `destroy'
+Completed 404 Not Found in 2ms (ActiveRecord: 0.3ms | Allocations: 595)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find CartItem with 'id'=163):
+  
+app/controllers/cart_items_controller.rb:24:in `destroy'
+Started DELETE "/cart_items/164" for ::1 at 2020-03-03 11:18:07 -0500
+Processing by CartItemsController#destroy as */*
+  Parameters: {"id"=>"164"}
+  [1m[36mCartItem Load (0.3ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items" WHERE "cart_items"."id" = $1 LIMIT $2[0m  [["id", 164], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:24:in `destroy'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+  [1m[36mCartItem Destroy (0.4ms)[0m  [1m[31mDELETE FROM "cart_items" WHERE "cart_items"."id" = $1[0m  [["id", 164]]
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:25:in `destroy'
+Completed 204 No Content in 4ms (ActiveRecord: 1.4ms | Allocations: 2177)
+
+
+Started GET "/cart_items" for ::1 at 2020-03-03 11:18:10 -0500
+Processing by CartItemsController#index as HTML
+  [1m[36mCartItem Load (0.6ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items"[0m
+  ↳ app/controllers/cart_items_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.06ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.6ms | Allocations: 929)
+
+
+Started GET "/products" for ::1 at 2020-03-03 12:18:03 -0500
+Started GET "/cart_items" for ::1 at 2020-03-03 12:18:03 -0500
+Processing by CartItemsController#index as */*
+Processing by ProductsController#index as */*
+  [1m[36mCartItem Load (2.1ms)[0m  [1m[34mSELECT "cart_items".* FROM "cart_items"[0m
+  ↳ app/controllers/cart_items_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.06ms)
+  [1m[36mProduct Load (1.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 2.1ms | Allocations: 1305)
+
+
+  ↳ app/controllers/products_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.62ms)
+Completed 200 OK in 7ms (Views: 5.4ms | ActiveRecord: 1.5ms | Allocations: 3162)
+
+
+Started POST "/cart_items" for ::1 at 2020-03-03 12:18:04 -0500
+Processing by CartItemsController#create as JSON
+  Parameters: {"cart_id"=>1, "product_id"=>1, "cart_item"=>{"cart_id"=>1, "product_id"=>1}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCart Load (0.5ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCartItem Create (1.9ms)[0m  [1m[32mINSERT INTO "cart_items" ("cart_id", "product_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["cart_id", 1], ["product_id", 1], ["created_at", "2020-03-03 17:18:04.659956"], ["updated_at", "2020-03-03 17:18:04.659956"]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+[active_model_serializers] Rendered CartItemSerializer with ActiveModelSerializers::Adapter::Attributes (0.74ms)
+Completed 200 OK in 15ms (Views: 1.6ms | ActiveRecord: 4.7ms | Allocations: 4700)
+
+
+Started POST "/cart_items" for ::1 at 2020-03-03 12:18:04 -0500
+Processing by CartItemsController#create as JSON
+  Parameters: {"cart_id"=>1, "product_id"=>1, "cart_item"=>{"cart_id"=>1, "product_id"=>1}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCart Load (0.4ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCartItem Create (1.5ms)[0m  [1m[32mINSERT INTO "cart_items" ("cart_id", "product_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["cart_id", 1], ["product_id", 1], ["created_at", "2020-03-03 17:18:04.826579"], ["updated_at", "2020-03-03 17:18:04.826579"]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+[active_model_serializers] Rendered CartItemSerializer with ActiveModelSerializers::Adapter::Attributes (0.93ms)
+Completed 200 OK in 11ms (Views: 1.8ms | ActiveRecord: 2.9ms | Allocations: 4669)
+
+
+Started POST "/cart_items" for ::1 at 2020-03-03 12:18:04 -0500
+Processing by CartItemsController#create as JSON
+  Parameters: {"cart_id"=>1, "product_id"=>1, "cart_item"=>{"cart_id"=>1, "product_id"=>1}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCart Load (0.3ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[36mCartItem Create (1.6ms)[0m  [1m[32mINSERT INTO "cart_items" ("cart_id", "product_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["cart_id", 1], ["product_id", 1], ["created_at", "2020-03-03 17:18:04.982170"], ["updated_at", "2020-03-03 17:18:04.982170"]]
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cart_items_controller.rb:19:in `create'
+[active_model_serializers] Rendered CartItemSerializer with ActiveModelSerializers::Adapter::Attributes (0.57ms)
+Completed 200 OK in 12ms (Views: 0.9ms | ActiveRecord: 3.4ms | Allocations: 4669)
+
+
