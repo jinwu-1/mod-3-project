@@ -103,6 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let tax = sum * .08
         checkOut.innerHTML = ""
         newDiv.innerHTML = `
+            <hr>
             <p id="subtotal"> Subtotal: $${sum.toFixed(2)} </p>
             <p id="tax"> Tax: $${tax.toFixed(2)}</p>
             <p id="total"> Total: $${((sum + tax).toFixed(2))}</p>

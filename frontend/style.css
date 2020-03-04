@@ -4,6 +4,12 @@ body {
     font-weight: 300;
   }
   
+.cover-title {
+    text-align: center;
+    color: rgb(141, 141, 141);
+    font-size: 48px;
+}
+
 .content {
     float: left;
 }
@@ -34,9 +40,8 @@ body {
     z-index: 1;
     top: 0;
     right: 0;
-    background-color: rgb(187, 187, 187);
+    background-color: rgb(71, 71, 71);
     overflow-x: hidden;
-    padding-top: 20px;
 }
 
 #clothes-box {
@@ -45,15 +50,30 @@ body {
 
 #cart-title {
     text-align: center;
-    color: rgb(90, 90, 90);
-    height: 20%;
+    color: rgb(216, 216, 216);
+    /* min-height: 20%; */
 }
 
-.list-of-items {
-    height: 60%;
+#list {
+    position: relative;
+    color: rgb(216, 216, 216);
+    width: 100%;
+    object-position: inherit;
+    min-height: 65%;
+    /* display:inline-block; */
+    /* overflow-wrap: normal; */
+    /* float: left; */
+    
+    
 }
 
 #checkout {
     text-align: center;
+    color: rgb(216, 216, 216);
+    position: relative;
+    /* height: 20%; */
+    /* overflow: hidden; */
+    clear: both;
+    width: 100%;
+    padding-bottom: 10px;
 }
-  
