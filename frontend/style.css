@@ -46,6 +46,14 @@ body {
 #cart-title {
     text-align: center;
     color: rgb(90, 90, 90);
+    height: 20%;
 }
 
+.list-of-items {
+    height: 60%;
+}
+
+#checkout {
+    text-align: center;
+}
   

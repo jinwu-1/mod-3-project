@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     let cartArray = [];
+    let subTotal = [];
     const findDiv = document.querySelector("#clothes-box")
     const findListOfItems = document.querySelector(".list-of-items")
 
@@ -91,6 +92,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function renderAllCartItems(cartItemsArray){
         cartItemsArray.forEach(cartItem => renderCartItem(cartItem))
+        const checkOut = document.querySelector("#checkout")
+        const newDiv = document.createElement("div")
+        subTotal = cartItemsArray.map(item => item.product.price)
+        const subFloat = subTotal.map(num => parseFloat(num))
+        let sum = subFloat.reduce(function (accumulator, currentValue) {
+            return accumulator + currentValue
+        }, 0)
+        let tax = sum * .08
+        checkOut.innerHTML = ""
+        newDiv.innerHTML = `
+            <p id="subtotal"> Subtotal: $${sum.toFixed(2)} </p>
+            <p id="tax"> Tax: $${tax.toFixed(2)}</p>
+            <p id="total"> Total: $${((sum + tax).toFixed(2))}</p>
+            <button id="check-out">Check Out</button>
+            `
+        checkOut.append(newDiv)
     }
 
     function renderAllProducts(productsArray){
