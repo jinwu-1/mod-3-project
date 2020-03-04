@@ -48,35 +48,13 @@ document.addEventListener("DOMContentLoaded", () => {
         let quantity = 1
         let var1 = cartItem.product.price * quantity
         newLi.innerHTML = `
-            <p id="pTag"> ${cartItem.product.name}: $${var1.toFixed(2)} </p>
-            <select id="quantity">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-            </select>
-            <button class="update">Update</button>
-            <button class="delete">Remove</button>
+            <p id="pTag"> ${cartItem.product.name}: $${var1.toFixed(2)}
+            <button id="delete">remove</button>
+            </p>
         `
         findListOfItems.append(newLi)
-        const updateButton = newLi.querySelector(".update")
-        updateButton.addEventListener("click", event => {
-            const selectElement = newLi.querySelector("#quantity")
-            const pTag = newLi.querySelector("#pTag")
-            let var2 = cartItem.product.price * selectElement.value
-            let var3 = var2.toFixed(2)
-            pTag.innerText = `${cartItem.product.name}: $${var3}`
-        })
 
-        findListOfItems.append(newLi)
-
-        const removeButton = newLi.querySelector(".delete")
+        const removeButton = newLi.querySelector("#delete")
         removeButton.addEventListener("click", event => {
             newLi.remove()
             fetch(`http://localhost:3000/cart_items/${cartItem.id}`, {
@@ -85,13 +63,13 @@ document.addEventListener("DOMContentLoaded", () => {
             .then(response => response.json())
             .then(results => {
                 cartArray = results
+                findListOfItems.innerHTML = ""
                 renderAllCartItems(cartArray)
             })
         })
     }
 
     function renderAllCartItems(cartItemsArray){
-        findListOfItems.innerHTML = ""
         cartItemsArray.forEach(cartItem => renderCartItem(cartItem))
         const checkOut = document.querySelector("#checkout")
         const newDiv = document.createElement("div")
@@ -105,11 +83,27 @@ document.addEventListener("DOMContentLoaded", () => {
         newDiv.innerHTML = `
             <hr>
             <p id="subtotal"> Subtotal: $${sum.toFixed(2)} </p>
-            <p id="tax"> Tax: $${tax.toFixed(2)}</p>
+            <p id="taxes"> Tax: $${tax.toFixed(2)}</p>
             <p id="total"> Total: $${((sum + tax).toFixed(2))}</p>
             <button id="check-out">Check Out</button>
             `
         checkOut.append(newDiv)
+
+        const subtotals = document.querySelector("#subtotal")
+        const total = document.querySelector("#total")
+        const taxes = document.querySelector("#taxes")
+        const checkoutBtn = newDiv.querySelector("#check-out")
+        checkoutBtn.addEventListener("click", event => {
+            findListOfItems.innerHTML = ""
+            subtotals.innerHTML = `Subtotal: $0.00`
+            taxes.innerHTML = `Tax: $0.00`
+            total.innerHTML = `Total: $0.00`
+            alert("Thank you for shopping at OSFA! Hope the clothes fit, no refunds :)");
+            fetch("http://localhost:3000/cart_items/", {
+                method: "DELETE"
+            })
+            cartArray = []
+        })
     }
 
     function renderAllProducts(productsArray){
