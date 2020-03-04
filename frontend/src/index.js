@@ -49,12 +49,12 @@ document.addEventListener("DOMContentLoaded", () => {
         let var1 = cartItem.product.price * quantity
         newLi.innerHTML = `
             <p id="pTag"> ${cartItem.product.name}: $${var1.toFixed(2)}
-            <button id="delete">remove</button>
+            <button class="delete-button">remove</button>
             </p>
         `
         findListOfItems.append(newLi)
 
-        const removeButton = newLi.querySelector("#delete")
+        const removeButton = newLi.querySelector(".delete-button")
         removeButton.addEventListener("click", event => {
             newLi.remove()
             fetch(`http://localhost:3000/cart_items/${cartItem.id}`, {
