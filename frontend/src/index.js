@@ -24,7 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
         addButton.addEventListener("click", event => {
             findListOfItems.innerText = ""
              
-
             fetch("http://localhost:3000/cart_items", {
                 method: "POST",
                 headers: {
@@ -85,12 +84,14 @@ document.addEventListener("DOMContentLoaded", () => {
             })
             .then(response => response.json())
             .then(results => {
-                cartArray = results;
+                cartArray = results
+                renderAllCartItems(cartArray)
             })
         })
     }
 
     function renderAllCartItems(cartItemsArray){
+        findListOfItems.innerHTML = ""
         cartItemsArray.forEach(cartItem => renderCartItem(cartItem))
         const checkOut = document.querySelector("#checkout")
         const newDiv = document.createElement("div")
@@ -122,7 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(response => response.json())
     .then(cartItemsArray => {
         cartArray = cartItemsArray;
-        renderAllCartItems(cartItemsArray)
+        renderAllCartItems(cartArray)
     })
 
 })
