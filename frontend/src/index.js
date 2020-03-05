@@ -49,7 +49,9 @@ document.addEventListener("DOMContentLoaded", () => {
         let var1 = cartItem.product.price * quantity
         newLi.innerHTML = `
             <p id="pTag"> ${cartItem.product.name}: $${var1.toFixed(2)}
-            <button class="delete-button">remove</button>
+            <button class="delete-button">
+                <span>remove</span>
+            </button>
             </p>
         `
         findListOfItems.append(newLi)
